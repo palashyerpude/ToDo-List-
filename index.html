@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>To-Do List</title>
+  <link rel="stylesheet" href="style.css">
+  <style>
+    body {
+  font-family: Arial, sans-serif;
+}
+
+h1 {
+  text-align: center;
+}
+
+form {
+  display: flex;
+  margin-bottom: 20px;
+}
+
+form input[type="text"] {
+  flex-grow: 1;
+  margin-right: 10px;
+}
+
+button[type="button"] {
+  background-color: #4CAF50;
+  border: none;
+  color: white;
+  padding: 10px 16px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin-bottom: 10px;
+  cursor: pointer;
+}
+
+ul {
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+}
+
+ul li {
+  display: flex;
+  align-items: center;
+  margin-bottom: 10px;
+  cursor: pointer;
+}
+
+ul li.strike-through {
+  text-decoration: line-through;
+  color: gray;
+}
+
+ul li span {
+  flex-grow: 1;
+}
+
+ul li button {
+  background-color: #f44336;
+  border: none;
+  color: white;
+  padding: 5px;
+  margin-left: 10px;
+  border-radius: 50%;
+  cursor: pointer;
+}
+
+  </style>
+</head>
+<body>
+  <h1>To-Do List</h1>
+
+  <form>
+    <input type="text" id="new-task-input" placeholder="Add a new task...">
+    <button type="button" id="add-task-btn">Add Task</button>
+  </form>
+
+  <h2>Tasks</h2>
+  <ul id="task-list"></ul>
+
+  <h2>Folders</h2>
+  <ul id="folder-list"></ul>
+
+  <form>
+    <input type="text" id="new-folder-input" placeholder="Add a new folder...">
+    <button type="button" id="add-folder-btn">Add Folder</button>
+  </form>
+
+  <script>
+    const taskList = document.getElementById('task-list');
+const folderList = document.getElementById('folder-list');
+const newTaskInput = document.getElementById('new-task-input');
+const addTaskBtn = document.getElementById('add-task-btn');
+const newFolderInput = document.getElementById('new-folder-input');
+const addFolderBtn = document.getElementById('add-folder-btn');
+
+// Create an array to store the tasks and folders
+let tasks = [];
+let folders = [];
+
+// Load the tasks and folders from localStorage, if available
+if (localStorage.getItem('tasks')) {
+  tasks = JSON.parse(localStorage.getItem('tasks'));
+  renderTasks();
+}
+
+if (localStorage.getItem('folders')) {
+  folders = JSON.parse(localStorage.getItem('folders'));
+  renderFolders();
+}
+
+// Event listener for adding a new task
+addTaskBtn.addEventListener('click', () => {
+  const taskText = newTaskInput.value.trim();
+  if (taskText) {
+    tasks.push({
+      text: taskText,
+      completed: false,
+      folder: null,
+    });
+    localStorage.setItem('tasks', JSON.stringify(tasks));
+    renderTasks();
+    newTaskInput.value = '';
+  }
+});
+
+// // Event listener for completing a task
+// taskList.addEventListener('click', (event) => {
+//   const
+
+  </script>
+</body>
+</html>
