@@ -1,0 +1,51 @@
+</html>
+<!-- <!DOCTYPE html>
+<html>
+<head>
+  <title>My To-Do List App</title>
+   Include Vue.js -->
+  <!-- <script src="https://cdn.jsdelivr.net/npm/vue@2.6.14/dist/vue.js"></script>
+  <style>
+    /* Custom styles for the app */
+    .todo-list {
+      margin-bottom: 1rem;
+    }
+
+    .todo-list input {
+      margin-right: 1rem;
+    }
+
+    .todo-list .completed {
+      text-decoration: line-through;
+    }
+
+    .folder-list {
+      margin-top: 1rem;
+    }
+  </style>
+</head>
+<body>
+  <div id="app">
+    <h1>My To-Do List App</h1>
+    <h2>To-Do Lists</h2>
+    <div class="todo-list" v-for="(todoList, index) in todoLists" :key="index">
+      <input type="checkbox" v-model="todoList.completed">
+      <span :class="{ 'completed': todoList.completed }">{{ todoList.task }}</span>
+    </div>
+    <h2>Folders</h2>
+    <ul class="folder-list">
+      <li v-for="(folder, index) in folders" :key="index">{{ folder }}</li>
+    </ul>
+    <h3>Create New To-Do List</h3>
+    <form @submit.prevent="addTodoList">
+      <input type="text" v-model="newTodoList" required>
+      <button type="submit">Add</button>
+    </form>
+    <h3>Create New Folder</h3>
+    <form @submit.prevent="addFolder">
+      <input type="text" v-model="newFolder" required>
+      <button type="submit">Add</button>
+    </form>
+  </div>
+</body>
+</html>
